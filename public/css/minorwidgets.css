@@ -1,10 +1,7 @@
 
 
 li.navEle{
-
 display: inline-block;
-
-
 }
 
 li.hidNavEle{
@@ -13,13 +10,7 @@ li.hidNavEle{
 background-color:#12333f;
 padding: 0px;
 width: 100%;
-
-
 }
-
-
-
-
 
 button.navcom{
 
@@ -33,10 +24,7 @@ left:7px;
 z-index: inherit;
 }
 
-
-
-
-button.navcomhid{
+on.navcomhid{
 
 background-color: #12333f;
 outline: none;

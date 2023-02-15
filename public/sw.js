@@ -5,15 +5,15 @@ const dynamicCacheName = "dynamic-v6";
 //always change cache version
 
 const asset = [
-    "/", // User ask without the display start up just on server
-    "/index.html",
-    "/js/App.js",
-    "/js/materialize.min.js",
-    "/js/ui.js",
-    "/pages/fallback.html",
-    "/css/materialize.min.css",
-    "/css/minorwidgets.css",
-    "/img/dish.png",
+    "./", // User ask without the display start up just on server
+    "index.html",
+    "./js/App.js",
+    "./js/materialize.min.js",
+    "./js/ui.js",
+    "./pages/fallback.html",
+    "./css/materialize.min.css",
+    "./css/minorwidgets.css",
+    "./img/dish.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     "https://fonts.gstatic.com/s/materialicons/v67/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2",
 
@@ -29,7 +29,7 @@ const limitCacheSize = (name, size)=>{
     caches.open(name).then(cac =>
         cac.keys().then(
             keys=>{
-                if (keys.length>size && keys[0]!=="/js/db.js" ){
+                if (keys.length>size && keys[0]!=="./js/db.js" ){
                     cac.delete(keys[0]).then(
                     
                         limitCacheSize(name, size)
@@ -37,7 +37,7 @@ const limitCacheSize = (name, size)=>{
                     ); //delete the first item
 
                 }
-                else if (keys.length>size && keys[0]=="/js/db.js" ){
+                else if (keys.length>size && keys[0]=="./js/db.js" ){
                     cac.delete(keys[1]).then(
                     
                         limitCacheSize(name, size)
@@ -129,7 +129,7 @@ if (eve.request.url.indexOf("firestore.googleapis.com") === -1 &&
             ()=>{
                 //we dun pass the error since we won't use it
              if (eve.request.url.indexOf(".html") > -1){
-               return caches.match("/pages/fallback.html");
+               return caches.match("./pages/fallback.html");
             }
             }
         )
